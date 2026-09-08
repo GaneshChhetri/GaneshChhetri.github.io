@@ -140,7 +140,8 @@ h2{
   color:var(--accent);background:var(--accent-soft);
   padding:4px 7px;border-radius:4px;
 }
-.tl-item p{margin:0;color:var(--ink-soft);font-size:15.5px;max-width:66ch}
+.tl-item p{margin:0 0 10px;color:var(--ink-soft);font-size:15.5px;max-width:66ch}
+.tl-item .tags{max-width:66ch}
 
 .role-card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
@@ -152,16 +153,7 @@ h2{
 .role-when{font-size:13px;color:var(--ink-faint);white-space:nowrap}
 .role-note{margin:14px 0 0;padding-top:14px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink-soft)}
 
-/* ---------- project cards ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px}
-.card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:20px 22px;transition:border-color .18s,transform .18s;
-}
-.card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.card h3{font:600 17px/1.3 var(--serif);margin:0 0 4px}
-.card .for{font-size:12.5px;color:var(--accent);letter-spacing:.04em;margin:0 0 10px;font-weight:500}
-.card p{margin:0 0 14px;font-size:14.5px;color:var(--ink-soft)}
+/* ---------- tech tags ---------- */
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{
   font-size:11.5px;padding:3px 8px;border-radius:5px;
@@ -232,7 +224,7 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><h2>Experience</h2><span class="rule"></span></div>
+    <div class="sec-head"><h2>Experience &amp; Projects</h2><span class="rule"></span></div>
 
     <div class="role-card">
       <div class="role-top">
@@ -248,101 +240,77 @@ footer a:hover{color:var(--accent);border-color:var(--accent)}
     <div class="tl">
 
       <div class="tl-item">
-        <div class="tl-when">Aug 2023 — Jan 2024 · Probation</div>
+        <div class="tl-when">Aug 2023 — Jan 2024 · Developer, probation project</div>
         <h3 class="tl-what">User Management &amp; Report Management System</h3>
-        <p>Built and delivered a complete user administration and reporting system in Python during the six-month probation period — accounts, roles and permissions on one side, report generation and export on the other.</p>
+        <p>A complete user administration and reporting system, built in Python and delivered inside the six-month probation period. Account creation, roles and permissions on one side; report definition, generation and export on the other.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-when">2024 · Production support &amp; enhancement</div>
-        <h3 class="tl-what">BFDA · BCSEA · G2C Feedback System</h3>
-        <p>Took on three live government systems — not only keeping them running, but building enhancements and clearing long-standing defects. Payment integration work for BCSEA on Spring and Hibernate, encoding corruption and reporting fixes for BFDA, and the citizen feedback platform integrated with Bhutan NDI.</p>
+        <div class="tl-when">2024 · Support &amp; enhancement</div>
+        <h3 class="tl-what">Bhutan Food &amp; Drug Authority systems</h3>
+        <p>Kept BFDA's live systems running and improved them rather than only patching them — new features, long-standing defect clearance, PostgreSQL Foreign Data Wrapper links for cross-database reporting, recovery of a medical-products database from character-encoding corruption without data loss, and Spring Boot CORS corrections across services.</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span></div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-when">2024</div>
+        <div class="tl-when">2024 · Support &amp; enhancement</div>
+        <h3 class="tl-what">BCSEA — examination services</h3>
+        <p>Built and debugged the payment integration for the Bhutan Council for School Examinations and Assessment, so candidates can pay for examination services online, and optimised the MySQL views behind its production reporting database.</p>
+        <div class="tags"><span class="tag">Spring</span><span class="tag">Hibernate</span><span class="tag">MySQL</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-when">2024 · Support &amp; enhancement</div>
+        <h3 class="tl-what">G2C Feedback System</h3>
+        <p>The citizen feedback platform for Government-to-Citizen services, integrated with Bhutan NDI — verifiable credential issuance, proof requests against the national identity wallet, and NATS-based event handling.</p>
+        <div class="tags"><span class="tag">Spring MVC</span><span class="tag">Bhutan NDI</span><span class="tag">NATS</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-when">2024 · Developer</div>
         <h3 class="tl-what">ETool — Report Management</h3>
-        <p>Development on the ETool reporting platform, covering report definition, generation and the data access behind it.</p>
+        <p>Development on the ETool reporting platform: report definition, generation, and the data access layer underneath it.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Spring</span><span class="tag">SQL</span></div>
       </div>
 
       <div class="tl-item">
-        <div class="tl-when">2024 — 2025</div>
-        <h3 class="tl-what">Digital Health Platform (DHP)</h3>
-        <p>Application modules — dynamic screening, assessment, consent, behaviour tracking, email verification and search — alongside the AWS foundation: Lambda warming on EventBridge schedules, VPC and NAT Gateway networking, Cognito bulk user provisioning and IAM policy design.</p>
+        <div class="tl-when">2024 — 2025 · Developer</div>
+        <h3 class="tl-what">Digital Health Platform</h3>
+        <p>Modules for a national health screening programme — dynamic screening, assessment, consent capture, behaviour tracking, email verification and search — on an AWS foundation I built: Lambda warming on EventBridge schedules to remove cold starts, VPC and NAT Gateway networking, Cognito bulk user provisioning and IAM policy design.</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">AWS Lambda</span><span class="tag">Cognito</span><span class="tag">EventBridge</span><span class="tag">VPC</span><span class="tag">IAM</span></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-when">2025</div>
         <h3 class="tl-what">DRUG-RIMS <span class="led">Project Lead</span></h3>
-        <p>Led the Drug Registration &amp; Information Management System for the Bhutan Food &amp; Drug Authority: Spring Boot and Next.js, PostgreSQL, registration and licensing workflows, the Certificate of Product Registration rebuilt to an official-document standard, and a multi-week security hardening programme against OWASP ZAP findings.</p>
+        <p>Led the Drug Registration &amp; Information Management System for BFDA — registration and licensing workflows for pharmaceutical products, and the Certificate of Product Registration rebuilt to an official-document standard. Ran a multi-week hardening programme over it: OWASP ZAP findings closed, a 403 authorization bypass fixed, Content Security Policy and headers configured in nginx, and flagged dependency vulnerabilities cleared.</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">nginx</span><span class="tag">OWASP ZAP</span></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-when">2025 — Present</div>
         <h3 class="tl-what">Mines Administration System <span class="led">Project Lead</span></h3>
-        <p>Leading a 34-module Spring Boot and Angular platform for the Department of Geology and Mines — mining and quarrying leases, transport permits, royalty and payment integration, multi-level approval workflows, role-based access control and NDI passwordless login, taken through full User Acceptance Testing with government stakeholders.</p>
+        <p>Leading a 34-module platform for the Department of Geology and Mines: mining and quarrying leases, transport permits, stockyard balances, royalty calculation and online payment, multi-level approval workflows, role-based access control and NDI passwordless login. Delivered through full User Acceptance Testing with government stakeholders, running on Kubernetes.</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">Bhutan NDI</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-when">Independent work</div>
+        <h3 class="tl-what">Document &amp; Invoice Automation</h3>
+        <p>Node.js tooling that generates Word documents and invoices for Nimalung Dratshang and Yuvan Infotech, replacing document preparation that had been done by hand.</p>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">docx</span></div>
       </div>
 
     </div>
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head"><h2>Selected Work</h2><span class="rule"></span></div>
-    <div class="cards">
-
-      <article class="card">
-        <h3>Mines Administration System</h3>
-        <p class="for">Department of Geology and Mines</p>
-        <p>34 modules covering lease administration, transport permits, stockyard balances, royalty calculation and payment, workflow approvals and reporting. Led delivery through UAT.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span><span class="tag">Bhutan NDI</span></div>
-      </article>
-
-      <article class="card">
-        <h3>DRUG-RIMS</h3>
-        <p class="for">Bhutan Food &amp; Drug Authority</p>
-        <p>Registration, licensing and tracking of pharmaceutical products. Led development and ran the security hardening programme — ZAP remediation, CSP and header configuration, dependency CVE clearance.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">nginx</span><span class="tag">OWASP ZAP</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Digital Health Platform</h3>
-        <p class="for">National health screening programme</p>
-        <p>Screening, assessment, consent and behaviour-tracking modules on an AWS foundation — Lambda, EventBridge, Cognito, VPC and IAM.</p>
-        <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">Cognito</span><span class="tag">EventBridge</span><span class="tag">VPC</span></div>
-      </article>
-
-      <article class="card">
-        <h3>G2C Feedback System</h3>
-        <p class="for">Government to Citizen services</p>
-        <p>Citizen feedback platform integrated with Bhutan NDI — verifiable credentials, proof requests and NATS-based event handling.</p>
-        <div class="tags"><span class="tag">Spring MVC</span><span class="tag">Bhutan NDI</span><span class="tag">NATS</span></div>
-      </article>
-
-      <article class="card">
-        <h3>User &amp; Report Management System</h3>
-        <p class="for">NGN Technologies · probation project</p>
-        <p>Accounts, roles and permissions with a report generation and export layer, built in Python and delivered within the probation period.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
-      </article>
-
-      <article class="card">
-        <h3>Document &amp; Invoice Automation</h3>
-        <p class="for">Nimalung Dratshang · Yuvan Infotech</p>
-        <p>Node.js tooling that generates Word documents and invoices, replacing manual document preparation.</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">docx</span></div>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 <section id="skills">
   <div class="wrap">
     <div class="sec-head"><h2>Toolkit</h2><span class="rule"></span></div>
     <dl class="skills">
-      <div class="skill-row"><dt>Languages</dt><dd>Java · JavaScript / TypeScript · Python · SQL · HTML · CSS</dd></div>
       <div class="skill-row"><dt>Backend</dt><dd>Spring Boot · Spring MVC · Spring Security · Hibernate / JPA · REST APIs · Node.js · FastAPI · Django</dd></div>
       <div class="skill-row"><dt>Frontend</dt><dd>Angular · Next.js / React · Bootstrap</dd></div>
       <div class="skill-row"><dt>Data</dt><dd>PostgreSQL · MySQL · MongoDB · backup &amp; restore · Foreign Data Wrappers · query and view optimization</dd></div>
