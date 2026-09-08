@@ -279,6 +279,10 @@ a.ctile:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:var
 @media (max-width:700px){
   .contact-grid{grid-template-columns:1fr}
 }
+@media (max-width:560px){
+  .ctile{padding:12px 13px;gap:11px}
+  .ctile-ico{width:36px;height:36px;border-radius:9px}
+}
 @media (max-width:600px){
   /* role badge and client name each get their own line */
   .for{display:block;margin-left:0;margin-top:-2px;margin-bottom:2px;line-height:1.4}
@@ -292,7 +296,20 @@ a.ctile:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:var
   .desc{font-size:15px}
 }
 @media (max-width:560px){
-  .hero-grid{grid-template-columns:1fr;gap:16px}
+  /* keep the photo beside the name instead of stranding it on its own row */
+  .hero{padding-top:24px;padding-bottom:18px}
+  .hero-grid{grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+  .avatar{width:78px;border-radius:5px}
+  .hero h1{font-size:26px;letter-spacing:-.015em;line-height:1.15}
+  .hero .title{font-size:15.5px;margin-top:2px}
+  .hero .loc{font-size:13.5px;margin-top:5px}
+  .hero-links{gap:8px;margin-top:14px}
+  .hlink{
+    flex:1 1 100%;justify-content:flex-start;
+    padding:9px 13px;font-size:14px;overflow-wrap:anywhere;
+  }
+  .rule-head{margin-top:16px}
+
   .fact{padding:13px 14px}
   .fact .n{font-size:22px}
   .timeline{padding-left:22px}
