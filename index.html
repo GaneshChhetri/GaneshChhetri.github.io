@@ -83,11 +83,6 @@ svg{display:block;flex:none}
   padding:clamp(30px,5vw,46px) 0 clamp(22px,3.5vw,30px);
   position:relative;
 }
-.hero::after{
-  content:"";display:block;
-  max-width:920px;margin:clamp(20px,3vw,26px) auto 0;
-  height:3px;background:var(--navy);border-radius:2px;
-}
 .hero-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,32px);align-items:center}
 .avatar{
   width:clamp(96px,14vw,124px);aspect-ratio:35/45;
@@ -240,13 +235,12 @@ svg{display:block;flex:none}
 
 /* ============================================================ closing */
 .contact-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.close-rule{
-  max-width:920px;margin:clamp(30px,4.5vw,44px) auto clamp(26px,4vw,34px);
-  height:3px;background:var(--navy);border-radius:2px;
-}
+.rule-3{height:3px;background:var(--navy);border-radius:2px}
+.rule-head{margin-top:clamp(18px,3vw,26px)}
+.rule-close{margin:clamp(28px,4.5vw,42px) 0 clamp(22px,3.5vw,30px)}
 .colophon{
   text-align:center;font-size:13.5px;color:var(--soft);
-  padding-bottom:clamp(26px,4vw,38px);
+  padding:0 clamp(16px,4vw,28px) clamp(26px,4vw,38px);
 }
 
 /* ============================================================ responsive */
@@ -259,6 +253,18 @@ svg{display:block;flex:none}
   .skilltable td{display:block;padding:0 0 12px}
   .skilltable tr + tr td{border-top:0}
   .skilltable tr:first-child th{border-top:0}
+}
+@media (max-width:600px){
+  /* role badge and client name each get their own line */
+  .for{display:block;margin-left:0;margin-top:-2px;margin-bottom:2px;line-height:1.4}
+  .badge{margin-bottom:4px}
+  /* title and date read left to right instead of pushed to opposite edges */
+  .exp-top{justify-content:flex-start;gap:6px 10px}
+  .exp-top h3{font-size:17.5px;flex:1 1 100%}
+  .item-top{display:block}
+  .item-top .y{display:block;margin-top:2px}
+  .lead{font-size:15.5px}
+  .desc{font-size:15px}
 }
 @media (max-width:560px){
   .hero-grid{grid-template-columns:1fr;gap:16px}
@@ -298,6 +304,7 @@ svg{display:block;flex:none}
       </div>
     </div>
   </div>
+  <div class="wrap"><div class="rule-3 rule-head"></div></div>
 </header>
 
 <main class="wrap">
@@ -562,7 +569,7 @@ svg{display:block;flex:none}
 
 </main>
 
-<div class="close-rule"></div>
+<div class="wrap"><div class="rule-3 rule-close"></div></div>
 <p class="colophon">Ganesh Chhetri &nbsp;·&nbsp; Thimphu, Bhutan</p>
 
 </body>
