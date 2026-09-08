@@ -77,54 +77,54 @@ svg{display:block;flex:none}
 
 .wrap{max-width:920px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
 
-/* ============================================================ hero */
+/* ============================================================ header */
 .hero{
-  background:var(--dark);
-  color:#fff;
-  padding:clamp(34px,6vw,56px) 0 clamp(56px,8vw,76px);
+  background:var(--page);
+  padding:clamp(30px,5vw,46px) 0 clamp(22px,3.5vw,30px);
   position:relative;
-  overflow:hidden;
 }
 .hero::after{
-  content:"";position:absolute;inset:auto 0 0 0;height:1px;
-  background:rgba(255,255,255,.14);
+  content:"";display:block;
+  max-width:920px;margin:clamp(20px,3vw,26px) auto 0;
+  height:3px;background:var(--navy);border-radius:2px;
 }
-.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,34px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,32px);align-items:center}
 .avatar{
-  width:clamp(96px,14vw,126px);aspect-ratio:35/45;
+  width:clamp(96px,14vw,124px);aspect-ratio:35/45;
   object-fit:cover;object-position:center top;
-  border-radius:8px;
-  border:3px solid rgba(255,255,255,.9);
-  box-shadow:0 10px 28px -10px rgba(0,0,0,.6);
+  border-radius:6px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
 }
 .hero h1{
-  color:#fff;
-  font-size:clamp(30px,5vw,42px);
-  font-weight:700;letter-spacing:-.015em;
+  color:var(--ink);
+  font-size:clamp(30px,5vw,44px);
+  font-weight:700;letter-spacing:-.02em;
 }
 .hero .title{
-  font-size:clamp(16px,2.2vw,19px);font-weight:600;
-  color:#e6e1d8;margin-top:5px;
+  font-size:clamp(16px,2.2vw,19.5px);font-weight:600;
+  color:var(--navy);margin-top:4px;
 }
 .hero .loc{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:14.5px;color:#b0a99e;margin-top:9px;
+  font-size:14.5px;color:var(--soft);margin-top:8px;
 }
-.hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
 .hlink{
   display:inline-flex;align-items:center;gap:8px;
   padding:7px 14px;border-radius:999px;
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.20);
-  color:#fff;text-decoration:none;font-size:14.5px;font-weight:500;
-  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+  background:var(--card);
+  border:1px solid var(--line);
+  color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .16s ease,color .16s ease,transform .16s ease;
 }
-.hlink:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);transform:translateY(-1px)}
+.hlink:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-1px)}
 
 /* ============================================================ facts */
 .facts{
   display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
-  margin-top:clamp(-46px,-5vw,-38px);position:relative;z-index:2;
+  margin-top:clamp(20px,3vw,26px);
 }
 .fact{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -204,17 +204,20 @@ svg{display:block;flex:none}
 }
 
 /* ============================================================ skills */
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.skill{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);padding:16px 18px;
-  border-left:3px solid var(--navy);
+.skilltable{width:100%;border-collapse:collapse}
+.skilltable tr + tr th,.skilltable tr + tr td{border-top:1px solid var(--line-soft)}
+.skilltable th{
+  text-align:left;vertical-align:top;
+  width:180px;padding:12px 20px 12px 0;
+  font-size:14.5px;font-weight:700;color:var(--navy);
+  white-space:nowrap;
 }
-.skill h3{
-  font-size:14px;color:var(--navy);font-weight:700;
-  letter-spacing:.02em;margin-bottom:5px;
+.skilltable td{
+  vertical-align:top;padding:12px 0;
+  font-size:15.5px;line-height:1.55;color:var(--body);font-weight:400;
 }
-.skill p{font-size:14.5px;line-height:1.55}
+.skilltable tr:first-child th,.skilltable tr:first-child td{padding-top:0}
+.skilltable tr:last-child th,.skilltable tr:last-child td{padding-bottom:0}
 
 /* ============================================================ list cards */
 .item{
@@ -238,11 +241,12 @@ svg{display:block;flex:none}
 /* ============================================================ footer */
 .foot{
   margin-top:clamp(36px,5vw,52px);
-  background:var(--dark-2);color:#b0a99e;
-  padding:26px 0;
+  border-top:1px solid var(--line);
+  background:var(--page);color:var(--soft);
+  padding:22px 0 34px;
 }
 .foot .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;align-items:center;font-size:14.5px}
-.foot a{color:#e6e1d8;text-decoration:none}
+.foot a{color:var(--navy);text-decoration:none}
 .foot a:hover{text-decoration:underline}
 
 /* ============================================================ responsive */
@@ -250,9 +254,14 @@ svg{display:block;flex:none}
   .facts{grid-template-columns:repeat(2,1fr)}
   .skills{grid-template-columns:1fr}
 }
+@media (max-width:640px){
+  .skilltable th{display:block;width:auto;padding:12px 0 2px;white-space:normal;border-top:1px solid var(--line-soft)}
+  .skilltable td{display:block;padding:0 0 12px}
+  .skilltable tr + tr td{border-top:0}
+  .skilltable tr:first-child th{border-top:0}
+}
 @media (max-width:560px){
   .hero-grid{grid-template-columns:1fr;gap:16px}
-  .facts{margin-top:-32px}
   .fact{padding:13px 14px}
   .fact .n{font-size:22px}
   .timeline{padding-left:22px}
@@ -427,15 +436,17 @@ svg{display:block;flex:none}
       <span class="sec-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span>
       <h2>Technical Skills</h2><span class="bar"></span>
     </div>
-    <div class="skills">
-      <div class="skill"><h3>Languages</h3><p>Java, JavaScript and TypeScript, Python, SQL, HTML, CSS</p></div>
-      <div class="skill"><h3>Backend</h3><p>Spring Boot, Spring MVC, Spring Security, Hibernate and JPA, REST APIs, Node.js, FastAPI, Django</p></div>
-      <div class="skill"><h3>Frontend</h3><p>Angular, Next.js and React</p></div>
-      <div class="skill"><h3>Databases</h3><p>PostgreSQL, MySQL, MongoDB; backup and restore, foreign data wrappers, indexing, query and view optimisation</p></div>
-      <div class="skill"><h3>Cloud and DevOps</h3><p>AWS (Lambda, API Gateway, EC2, S3, IAM, Cognito, EventBridge, VPC, Secrets Manager), Kubernetes, Docker, Jenkins, nginx, Linux, Git</p></div>
-      <div class="skill"><h3>Digital identity</h3><p>Bhutan NDI — credential issuance, proof requests, passwordless login, webhook registration, NATS event handling</p></div>
-      <div class="skill"><h3>Security</h3><p>OWASP ZAP remediation, content security policy and headers, JWT, role-based access control, SSO with Keycloak, dependency scanning, patch management, secure API design</p></div>
-      <div class="skill"><h3>Practices</h3><p>Requirement gathering, system analysis and design, technical specification, user acceptance testing, production support, project coordination</p></div>
+    <div class="card">
+      <table class="skilltable">
+        <tr><th>Languages</th><td>Java, JavaScript and TypeScript, Python, SQL, HTML, CSS</td></tr>
+        <tr><th>Backend</th><td>Spring Boot, Spring MVC, Spring Security, Hibernate and JPA, REST APIs, Node.js, FastAPI, Django</td></tr>
+        <tr><th>Frontend</th><td>Angular, Next.js and React</td></tr>
+        <tr><th>Databases</th><td>PostgreSQL, MySQL, MongoDB; backup and restore, foreign data wrappers, indexing, query and view optimisation</td></tr>
+        <tr><th>Cloud and DevOps</th><td>AWS (Lambda, API Gateway, EC2, S3, IAM, Cognito, EventBridge, VPC, Secrets Manager), Kubernetes, Docker, Jenkins, nginx, Linux, Git</td></tr>
+        <tr><th>Digital identity</th><td>Bhutan NDI — credential issuance, proof requests, passwordless login, webhook registration, NATS event handling</td></tr>
+        <tr><th>Security</th><td>OWASP ZAP remediation, content security policy and headers, JWT, role-based access control, SSO with Keycloak, dependency scanning, patch management, secure API design</td></tr>
+        <tr><th>Practices</th><td>Requirement gathering, system analysis and design, technical specification, user acceptance testing, production support, project coordination</td></tr>
+      </table>
     </div>
   </section>
 
