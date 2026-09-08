@@ -4,377 +4,490 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ganesh Chhetri — Software Engineer, Thimphu</title>
-<meta name="description" content="Software engineer in Thimphu, Bhutan. Three years building, securing and leading production government systems: DRUG-RIMS, Mines Administration System, Digital Health Platform.">
+<meta name="description" content="Software engineer in Thimphu, Bhutan. I build enterprise software end to end — data model, services, cloud, and the security work after release.">
 <meta property="og:title" content="Ganesh Chhetri — Software Engineer">
-<meta property="og:description" content="Building and securing production government systems in Bhutan.">
+<meta property="og:description" content="I build enterprise software end to end — data model, services, cloud, and the security work after release.">
 <meta property="og:type" content="profile">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛰️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ============================================================ tokens */
 :root{
-  --bg:#fbfaf7;
+  --paper:#eef1ef;
   --surface:#ffffff;
-  --ink:#16202e;
-  --ink-soft:#4d5a6b;
-  --ink-faint:#7c8798;
-  --line:#e4e0d8;
-  --navy:#1b365d;
-  --accent:#b8722a;
-  --accent-soft:#f4ece1;
-  --radius:14px;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
-  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --ink:#14261f;
+  --muted:#5a6b64;
+  --faint:#869790;
+  --rule:#d2dad6;
+  --rule-soft:#e2e8e5;
+  --accent:#0e7c5a;
+  --accent-ink:#075441;
+  --accent-wash:#e2efea;
+
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+  --measure:68ch;
+  --gutter:clamp(20px,5vw,56px);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#11151b;
-    --surface:#171d25;
-    --ink:#e8ecf1;
-    --ink-soft:#a4b0be;
-    --ink-faint:#78838f;
-    --line:#26303b;
-    --navy:#8fb3e0;
-    --accent:#e0a15f;
-    --accent-soft:#241b12;
+    --paper:#0e1614;
+    --surface:#14201c;
+    --ink:#e6ede9;
+    --muted:#93a49d;
+    --faint:#6d7f78;
+    --rule:#24332d;
+    --rule-soft:#1c2925;
+    --accent:#3fcb98;
+    --accent-ink:#7fe0bb;
+    --accent-wash:#132b23;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#11151b;
-  --surface:#171d25;
-  --ink:#e8ecf1;
-  --ink-soft:#a4b0be;
-  --ink-faint:#78838f;
-  --line:#26303b;
-  --navy:#8fb3e0;
-  --accent:#e0a15f;
-  --accent-soft:#241b12;
+  --paper:#0e1614;
+  --surface:#14201c;
+  --ink:#e6ede9;
+  --muted:#93a49d;
+  --faint:#6d7f78;
+  --rule:#24332d;
+  --rule-soft:#1c2925;
+  --accent:#3fcb98;
+  --accent-ink:#7fe0bb;
+  --accent-wash:#132b23;
 }
 
+/* ============================================================ base */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
-  background:var(--bg);
+  background:var(--paper);
   color:var(--ink);
-  font:400 16px/1.65 var(--sans);
+  font:400 16.5px/1.65 var(--sans);
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 img{max-width:100%;display:block}
-a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;margin:0}
+p{margin:0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+a:hover{border-bottom-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+.shell{max-width:1040px;margin:0 auto;padding:0 var(--gutter)}
 
-/* ---------- theme toggle ---------- */
-.theme-btn{
-  position:fixed;top:18px;right:18px;z-index:20;
-  width:38px;height:38px;border-radius:50%;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
-  font-size:15px;cursor:pointer;display:grid;place-items:center;
-  transition:transform .15s ease,color .15s ease;
+/* ============================================================ theme toggle */
+.theme{
+  position:fixed;top:16px;right:16px;z-index:30;
+  display:grid;place-items:center;
+  width:34px;height:34px;padding:0;
+  border:1px solid var(--rule);border-radius:50%;
+  background:var(--surface);color:var(--muted);
+  font:500 12px/1 var(--sans);cursor:pointer;
 }
-.theme-btn:hover{transform:scale(1.07);color:var(--accent)}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
 
-/* ---------- hero ---------- */
-.hero{padding:78px 0 34px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:132px 1fr;gap:30px;align-items:center}
-.avatar{
-  width:132px;height:132px;border-radius:50%;object-fit:cover;
-  border:3px solid var(--surface);
-  box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(20,32,50,.5);
-}
-.eyebrow{
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);font-weight:600;margin:0 0 8px;
-}
-h1{
-  font:600 clamp(34px,5.4vw,50px)/1.05 var(--serif);
-  margin:0 0 10px;letter-spacing:-.02em;
-}
-.tagline{margin:0 0 18px;font-size:17.5px;color:var(--ink-soft);max-width:52ch}
-.tagline strong{color:var(--ink);font-weight:600}
-.meta{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:5px 12px;border:1px solid var(--line);border-radius:100px;
-  font-size:13px;color:var(--ink-soft);background:var(--surface);
-  text-decoration:none;transition:border-color .15s,color .15s;
-}
-a.chip:hover{border-color:var(--accent);color:var(--accent)}
+/* ============================================================ masthead */
+.masthead{padding:clamp(56px,11vw,104px) 0 clamp(40px,6vw,60px)}
+.mast-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,5vw,56px);align-items:start}
 
-/* ---------- sections ---------- */
-section{padding:52px 0;border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:0}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 26px}
-h2{
-  font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent);margin:0;white-space:nowrap;
+.name{
+  font-size:clamp(42px,7.4vw,74px);
+  line-height:.98;
+  font-weight:300;
+  margin-bottom:.34em;
 }
-.sec-head .rule{flex:1;height:1px;background:var(--line)}
+.place{
+  font-size:14px;color:var(--muted);
+  margin-bottom:1.1em;
+}
+.pitch{
+  font-size:clamp(18px,2.2vw,21px);
+  line-height:1.5;
+  max-width:34ch;
+  color:var(--ink);
+  margin-bottom:1.5em;
+}
+.pitch em{font-family:var(--serif);font-style:italic;font-size:1.06em}
 
-.lede{font-size:18px;line-height:1.72;color:var(--ink-soft);max-width:68ch;margin:0 0 16px}
-.lede strong{color:var(--ink);font-weight:600}
-.lede:last-child{margin-bottom:0}
-
-/* ---------- timeline ---------- */
-.tl{position:relative;padding-left:26px}
-.tl::before{
-  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;
-  background:linear-gradient(var(--accent),var(--line));
-}
-.tl-item{position:relative;padding-bottom:30px}
-.tl-item:last-child{padding-bottom:0}
-.tl-item::before{
-  content:"";position:absolute;left:-25px;top:7px;width:11px;height:11px;
-  border-radius:50%;background:var(--bg);border:2px solid var(--accent);
-}
-.tl-when{
-  font-size:12.5px;letter-spacing:.06em;color:var(--ink-faint);
-  text-transform:uppercase;font-weight:500;margin-bottom:3px;
-}
-.tl-what{font:600 18px/1.35 var(--serif);margin:0 0 6px;letter-spacing:-.005em}
-.tl-what .led{
-  display:inline-block;vertical-align:2px;margin-left:8px;
-  font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);background:var(--accent-soft);
-  padding:4px 7px;border-radius:4px;
-}
-.tl-item p{margin:0 0 10px;color:var(--ink-soft);font-size:15.5px;max-width:66ch}
-.tl-item .tags{max-width:66ch}
-
-.role-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:22px 24px;margin-bottom:28px;
-}
-.role-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
-.role-title{font:600 19px/1.3 var(--serif);margin:0}
-.role-org{color:var(--ink-soft);font-size:15px;margin:2px 0 0}
-.role-when{font-size:13px;color:var(--ink-faint);white-space:nowrap}
-.role-note{margin:14px 0 0;padding-top:14px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink-soft)}
-
-/* ---------- tech tags ---------- */
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{
-  font-size:11.5px;padding:3px 8px;border-radius:5px;
-  background:var(--accent-soft);color:var(--ink-soft);border:1px solid var(--line);
+.portrait{
+  width:clamp(96px,15vw,132px);
+  aspect-ratio:35/45;
+  object-fit:cover;object-position:center top;
+  border-radius:3px;
+  border:1px solid var(--rule);
 }
 
-/* ---------- skills ---------- */
-.skills{display:grid;gap:2px}
-.skill-row{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:11px 0;border-top:1px solid var(--line)}
-.skill-row:first-child{border-top:0}
-.skill-row dt{font-weight:600;font-size:14px;color:var(--ink)}
-.skill-row dd{margin:0;font-size:14.5px;color:var(--ink-soft)}
-
-/* ---------- lists ---------- */
-.stack-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.stack-list li{
-  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
-  padding-bottom:10px;border-bottom:1px solid var(--line);font-size:15px;
+/* ---- role progression: the one loud element ---- */
+.track{
+  list-style:none;margin:0 0 2em;padding:0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  max-width:520px;
+  position:relative;
 }
-.stack-list li:last-child{border-bottom:0;padding-bottom:0}
-.stack-list .by{display:block;font-size:13px;color:var(--ink-faint);margin-top:1px}
-.stack-list .yr{font-size:13px;color:var(--ink-faint);white-space:nowrap}
+.track::before{
+  content:"";position:absolute;left:5px;right:5px;top:5px;height:1px;
+  background:var(--rule);
+}
+.track::after{
+  content:"";position:absolute;left:5px;top:5px;height:1px;
+  width:calc(100% - 10px);
+  background:var(--accent);
+  transform-origin:left center;
+  animation:draw 1100ms cubic-bezier(.65,.02,.28,1) 250ms both;
+}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* ---------- footer ---------- */
-footer{padding:40px 0 56px;text-align:center;color:var(--ink-faint);font-size:13.5px}
-footer a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
-footer a:hover{color:var(--accent);border-color:var(--accent)}
+.track li{position:relative;padding-top:19px;padding-right:12px}
+.track li::before{
+  content:"";position:absolute;left:0;top:0;width:11px;height:11px;
+  border-radius:50%;background:var(--paper);
+  border:1.5px solid var(--rule);
+}
+.track li.done::before{border-color:var(--accent);background:var(--paper)}
+.track li.now::before{
+  border-color:var(--accent);background:var(--accent);
+  animation:fill 400ms ease 1250ms both;
+}
+@keyframes fill{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.track .yr{display:block;font-size:12.5px;color:var(--faint);margin-bottom:1px}
+.track .st{display:block;font-size:14.5px;color:var(--muted);line-height:1.3}
+.track li.now .st{color:var(--accent-ink);font-weight:600}
 
-@media (max-width:620px){
-  .hero{padding:56px 0 28px}
-  .hero-grid{grid-template-columns:1fr;gap:20px}
-  .avatar{width:104px;height:104px}
-  .skill-row{grid-template-columns:1fr;gap:2px}
-  .stack-list li{grid-template-columns:1fr}
+.links{display:flex;flex-wrap:wrap;gap:22px;font-size:14.5px}
+.links a{color:var(--muted);border-bottom-color:var(--rule)}
+.links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ============================================================ sections */
+.band{border-top:1px solid var(--rule);padding:clamp(44px,6vw,68px) 0}
+.band > .shell > h2{
+  font-size:clamp(24px,3vw,29px);
+  margin-bottom:.9em;
+  font-weight:400;
+}
+.prose{max-width:var(--measure);font-size:17px;line-height:1.72;color:var(--muted)}
+.prose + .prose{margin-top:1.1em}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* ============================================================ work ledger */
+.ledger{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:clamp(20px,3.5vw,44px)}
+.lg-year{
+  font-family:var(--serif);font-size:30px;font-weight:300;
+  color:var(--faint);line-height:1;padding-top:4px;
+}
+.lg-items{
+  border-left:1px solid var(--rule-soft);
+  padding:0 0 clamp(30px,4vw,46px) clamp(20px,3vw,36px);
+  margin-left:-1px;
+}
+.ledger > .lg-items:last-child{padding-bottom:0}
+
+.entry + .entry{margin-top:30px;padding-top:30px;border-top:1px solid var(--rule-soft)}
+.entry-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px}
+.entry h3{font-size:21px;font-weight:500}
+.entry .role{font-size:12.5px;color:var(--faint);white-space:nowrap;letter-spacing:.01em}
+.entry .role.lead{
+  color:var(--accent-ink);font-weight:600;
+  background:var(--accent-wash);border-radius:3px;padding:3px 8px;
+}
+.entry .who{font-size:14px;color:var(--faint);margin:3px 0 9px}
+.entry .desc{max-width:64ch;color:var(--muted);font-size:15.5px;line-height:1.62}
+.stack{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0}
+.stack li{
+  font-size:12px;color:var(--faint);
+  border:1px solid var(--rule);border-radius:3px;
+  padding:2px 7px;
+}
+
+/* ============================================================ skills */
+.grid-defs{display:grid;gap:0;max-width:var(--measure)}
+.def{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:13px 0;border-top:1px solid var(--rule-soft)}
+.def:first-child{border-top:0;padding-top:0}
+.def dt{font-size:14px;font-weight:600;color:var(--ink)}
+.def dd{margin:0;font-size:15px;color:var(--muted);line-height:1.6}
+
+/* ============================================================ credentials */
+.rows{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+.rows li{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:baseline;
+  padding:13px 0;border-top:1px solid var(--rule-soft);
+}
+.rows li:first-child{border-top:0;padding-top:0}
+.rows .t{font-size:15.5px;color:var(--ink);font-weight:500}
+.rows .s{display:block;font-size:13.5px;color:var(--faint);font-weight:400;margin-top:2px;line-height:1.5}
+.rows .w{font-size:13px;color:var(--faint);white-space:nowrap}
+
+.subhead{
+  font-family:var(--serif);font-size:19px;color:var(--ink);
+  margin:38px 0 14px;font-weight:400;
+}
+
+/* ============================================================ foot */
+.foot{border-top:1px solid var(--rule);padding:34px 0 56px;color:var(--faint);font-size:14px}
+.foot .shell{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.foot a{color:var(--muted);border-bottom-color:var(--rule)}
+
+/* ============================================================ responsive */
+@media (max-width:720px){
+  .mast-grid{grid-template-columns:1fr;gap:22px}
+  .portrait{order:-1}
+  .track{grid-template-columns:1fr;max-width:none;gap:0}
+  .track::before,.track::after{
+    left:5px;right:auto;top:6px;bottom:6px;height:auto;width:1px;
+  }
+  .track::after{
+    height:calc(100% - 12px);width:1px;
+    transform-origin:top center;
+    animation-name:drawv;
+  }
+  @keyframes drawv{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .track li{padding:0 0 20px 26px}
+  .track li:last-child{padding-bottom:0}
+  .track li::before{top:3px}
+  .ledger{grid-template-columns:1fr}
+  .lg-year{font-size:24px;padding:0 0 12px}
+  .lg-items{border-left:0;padding-left:0;margin-left:0}
+  .def{grid-template-columns:1fr;gap:2px}
+  .rows li{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .track::after,.track li.now::before{animation:none}
+  *{transition:none!important}
 }
 </style>
 </head>
 <body>
 
-<button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◐</button>
+<button class="theme" id="theme" aria-label="Switch between light and dark">◑</button>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <img class="avatar" src="assets/profile.jpg" alt="Ganesh Chhetri">
+<header class="masthead">
+  <div class="shell mast-grid">
     <div>
-      <p class="eyebrow">Thimphu, Bhutan</p>
-      <h1>Ganesh Chhetri</h1>
-      <p class="tagline">Software engineer building and securing <strong>production government systems</strong> — drug registration, mining administration, digital health and national identity.</p>
-      <div class="meta">
-        <a class="chip" href="mailto:gannu607gc@gmail.com">✉︎ gannu607gc@gmail.com</a>
-        <a class="chip" href="https://github.com/GaneshChhetri" target="_blank" rel="noopener">◇ GitHub</a>
+      <h1 class="name">Ganesh&nbsp;Chhetri</h1>
+      <p class="place">Software engineer, Thimphu, Bhutan</p>
+      <p class="pitch">I build enterprise software end to end — the data model, the services, the cloud it runs on, and the security work that comes after release.</p>
+
+      <ol class="track">
+        <li class="done"><span class="yr">2023</span><span class="st">Building</span></li>
+        <li class="done"><span class="yr">2024</span><span class="st">Running production</span></li>
+        <li class="now"><span class="yr">2025 to now</span><span class="st">Leading delivery</span></li>
+      </ol>
+
+      <div class="links">
+        <a href="mailto:gannu607gc@gmail.com">gannu607gc@gmail.com</a>
+        <a href="https://github.com/GaneshChhetri" target="_blank" rel="noopener">github.com/GaneshChhetri</a>
       </div>
     </div>
+    <img class="portrait" src="assets/profile.jpg" alt="Ganesh Chhetri" width="132" height="170">
   </div>
 </header>
 
 <main>
 
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head"><h2>Profile</h2><span class="rule"></span></div>
-    <p class="lede">Three years at <strong>NGN Technologies</strong> in Thimphu, working end to end on systems that Bhutanese agencies run in production every day. I started on support and enhancement across BFDA, BCSEA and the G2C Feedback System, moved into building the Digital Health Platform, and now <strong>lead delivery on DRUG-RIMS and the Mines Administration System</strong>.</p>
-    <p class="lede">The work spans the whole lifecycle: sitting with business users to draw out requirements, designing the schema, writing the services and the screens, administering and backing up the databases, hardening the application against real scan findings, and staying on it through UAT and go-live. B.Tech in Computer Science &amp; Engineering with a specialization in <strong>Cloud Technology and Information Security</strong>.</p>
+<section class="band">
+  <div class="shell">
+    <h2>What I work on</h2>
+    <p class="prose">Most of what I build is the software an organisation actually runs on: registration and licensing workflows, approval hierarchies, permission models, reporting and payments. I take it from the first requirements conversation through the schema, the services and the screens, into production — and then stay with it, because the interesting problems arrive after go-live.</p>
+    <p class="prose">For the past two years that has meant leading delivery. Before it, keeping live systems healthy under real users, and building a national health platform on AWS. A thread runs through nearly all of it: I am the person who has wired <strong>Bhutan NDI</strong>, the national digital identity, into system after system. I hold a <strong>B.Tech in Computer Science &amp; Engineering</strong> specialising in cloud technology and information security, and I am comfortable owning the parts most people hand off — the database, the deployment, and the security findings.</p>
   </div>
 </section>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head"><h2>Experience &amp; Projects</h2><span class="rule"></span></div>
+<section class="band">
+  <div class="shell">
+    <h2>Work</h2>
 
-    <div class="role-card">
-      <div class="role-top">
-        <div>
-          <p class="role-title">Software Engineer</p>
-          <p class="role-org">NGN Technologies Private Limited · e-Centric Division, Thimphu</p>
-        </div>
-        <span class="role-when">Aug 2023 — Present</span>
-      </div>
-      <p class="role-note">Joined on probation at Grade T1, confirmed into service in Feb 2024, awarded a fast-track merit increment in Mar 2025, promoted to Grade T2 in Mar 2026.</p>
-    </div>
+    <div class="ledger">
 
-    <div class="tl">
-
-      <div class="tl-item">
-        <div class="tl-when">Aug 2023 — Jan 2024 · Developer, probation project</div>
-        <h3 class="tl-what">User Management System</h3>
-        <p>User administration built in Python — account creation and lifecycle, role definitions, and the permission model that decides what each role can reach. Delivered inside the six-month probation period.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
+      <div class="lg-year"><span>Across<br>projects</span></div>
+      <div class="lg-items">
+        <article class="entry">
+          <div class="entry-top">
+            <h3>National digital identity integration</h3>
+            <span class="role lead">Implementer</span>
+          </div>
+          <p class="who">Bhutan NDI, 2024 to now</p>
+          <p class="desc">I have put Bhutan NDI into nearly every system I have worked on — DRUG-RIMS, the Mines Administration System, DRA, BCSEA and the G2C Feedback System. That means credential issuance, proof requests against the citizen's identity wallet, passwordless login replacing username-and-password, webhook registration and event handling over NATS, and the tunnelling and credential rotation needed to keep the connection alive in production.</p>
+          <ul class="stack"><li>Bhutan NDI</li><li>Verifiable credentials</li><li>Proof requests</li><li>NATS</li><li>Webhooks</li></ul>
+        </article>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-when">Aug 2023 — Jan 2024 · Developer, probation project</div>
-        <h3 class="tl-what">Report Management System</h3>
-        <p>The reporting counterpart, also in Python — report definition, generation against the underlying data, and export for end users. Delivered alongside the user management system during probation.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
+      <div class="lg-year"><span>2025</span></div>
+      <div class="lg-items">
+        <article class="entry">
+          <div class="entry-top">
+            <h3>Mines Administration System</h3>
+            <span class="role lead">Project lead</span>
+          </div>
+          <p class="who">Department of Geology and Mines, 2025 to now</p>
+          <p class="desc">A 34-module platform for mining and quarrying administration — leases, transport permits, stockyard balances, royalty calculation and online payment, multi-level approval workflows, role-based access control and passwordless login through the national digital identity. Delivered through full user acceptance testing with the agency, running on Kubernetes.</p>
+          <ul class="stack"><li>Spring Boot</li><li>Angular</li><li>PostgreSQL</li><li>Kubernetes</li><li>Jenkins</li><li>Bhutan NDI</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>DRUG-RIMS</h3>
+            <span class="role lead">Project lead</span>
+          </div>
+          <p class="who">Bhutan Food &amp; Drug Authority, 2025</p>
+          <p class="desc">Drug registration and licensing for pharmaceutical products, including the Certificate of Product Registration rebuilt to an official document standard. I also ran a multi-week hardening programme over it: OWASP ZAP findings closed, a 403 authorization bypass fixed, content security policy and headers configured at the proxy, and flagged dependency vulnerabilities cleared.</p>
+          <ul class="stack"><li>Spring Boot</li><li>Next.js</li><li>PostgreSQL</li><li>nginx</li><li>OWASP ZAP</li></ul>
+        </article>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-when">2024 · Support &amp; enhancement</div>
-        <h3 class="tl-what">Bhutan Food &amp; Drug Authority systems</h3>
-        <p>Kept BFDA's live systems running and improved them rather than only patching them — new features, long-standing defect clearance, PostgreSQL Foreign Data Wrapper links for cross-database reporting, recovery of a medical-products database from character-encoding corruption without data loss, and Spring Boot CORS corrections across services.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span></div>
+      <div class="lg-year"><span>2024</span></div>
+      <div class="lg-items">
+        <article class="entry">
+          <div class="entry-top">
+            <h3>Digital Health Platform</h3>
+            <span class="role">Developer</span>
+          </div>
+          <p class="who">National health screening programme, 2024 to 2025</p>
+          <p class="desc">Application modules for screening and follow-up — dynamic screening, assessment, consent capture, behaviour tracking, email verification and search — on an AWS foundation I built: Lambda warming on scheduled events to remove cold starts, VPC and NAT gateway networking, bulk user provisioning and IAM policy design.</p>
+          <ul class="stack"><li>Spring Boot</li><li>AWS Lambda</li><li>Cognito</li><li>EventBridge</li><li>VPC</li><li>IAM</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>ETool</h3>
+            <span class="role">Developer</span>
+          </div>
+          <p class="who">Report management platform, 2024</p>
+          <p class="desc">Report definition, generation and the data access layer underneath it.</p>
+          <ul class="stack"><li>Java</li><li>Spring</li><li>SQL</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>G2C Feedback System</h3>
+            <span class="role">Support and enhancement</span>
+          </div>
+          <p class="who">Government-to-citizen services, 2024</p>
+          <p class="desc">A citizen feedback platform wired into the national digital identity — verifiable credential issuance, proof requests against the identity wallet, and event handling over NATS.</p>
+          <ul class="stack"><li>Spring MVC</li><li>Bhutan NDI</li><li>NATS</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>BCSEA examination services</h3>
+            <span class="role">Support and enhancement</span>
+          </div>
+          <p class="who">Bhutan Council for School Examinations and Assessment, 2024</p>
+          <p class="desc">Built and debugged the online payment integration so candidates could pay for examination services, and optimised the views behind the production reporting database.</p>
+          <ul class="stack"><li>Spring</li><li>Hibernate</li><li>MySQL</li><li>Bhutan NDI</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>Food and drug regulatory systems</h3>
+            <span class="role">Support and enhancement</span>
+          </div>
+          <p class="who">Bhutan Food &amp; Drug Authority, 2024</p>
+          <p class="desc">Kept the authority's live systems healthy and improved them rather than only patching them: new features, long-standing defects cleared, foreign data wrapper links for cross-database reporting, a medical products database recovered from character-encoding corruption without data loss, and CORS misconfigurations corrected across services.</p>
+          <ul class="stack"><li>Spring Boot</li><li>Spring MVC</li><li>PostgreSQL</li><li>MySQL</li></ul>
+        </article>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-when">2024 · Support &amp; enhancement</div>
-        <h3 class="tl-what">BCSEA — examination services</h3>
-        <p>Built and debugged the payment integration for the Bhutan Council for School Examinations and Assessment, so candidates can pay for examination services online, and optimised the MySQL views behind its production reporting database.</p>
-        <div class="tags"><span class="tag">Spring</span><span class="tag">Hibernate</span><span class="tag">MySQL</span></div>
+      <div class="lg-year"><span>2023</span></div>
+      <div class="lg-items">
+        <article class="entry">
+          <div class="entry-top">
+            <h3>Report Management System</h3>
+            <span class="role">Developer</span>
+          </div>
+          <p class="who">First project at NGN Technologies, 2023 to 2024</p>
+          <p class="desc">Report definition, generation against the underlying data, and export for end users. Built in Python and delivered inside the six-month probation period.</p>
+          <ul class="stack"><li>Python</li><li>SQL</li></ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <h3>User Management System</h3>
+            <span class="role">Developer</span>
+          </div>
+          <p class="who">First project at NGN Technologies, 2023 to 2024</p>
+          <p class="desc">Account creation and lifecycle, role definitions, and the permission model deciding what each role can reach. Its reporting counterpart shipped alongside it.</p>
+          <ul class="stack"><li>Python</li><li>SQL</li></ul>
+        </article>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-when">2024 · Support &amp; enhancement</div>
-        <h3 class="tl-what">G2C Feedback System</h3>
-        <p>The citizen feedback platform for Government-to-Citizen services, integrated with Bhutan NDI — verifiable credential issuance, proof requests against the national identity wallet, and NATS-based event handling.</p>
-        <div class="tags"><span class="tag">Spring MVC</span><span class="tag">Bhutan NDI</span><span class="tag">NATS</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-when">2024 · Developer</div>
-        <h3 class="tl-what">ETool — Report Management</h3>
-        <p>Development on the ETool reporting platform: report definition, generation, and the data access layer underneath it.</p>
-        <div class="tags"><span class="tag">Java</span><span class="tag">Spring</span><span class="tag">SQL</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-when">2024 — 2025 · Developer</div>
-        <h3 class="tl-what">Digital Health Platform</h3>
-        <p>Modules for a national health screening programme — dynamic screening, assessment, consent capture, behaviour tracking, email verification and search — on an AWS foundation I built: Lambda warming on EventBridge schedules to remove cold starts, VPC and NAT Gateway networking, Cognito bulk user provisioning and IAM policy design.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">AWS Lambda</span><span class="tag">Cognito</span><span class="tag">EventBridge</span><span class="tag">VPC</span><span class="tag">IAM</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-when">2025</div>
-        <h3 class="tl-what">DRUG-RIMS <span class="led">Project Lead</span></h3>
-        <p>Led the Drug Registration &amp; Information Management System for BFDA — registration and licensing workflows for pharmaceutical products, and the Certificate of Product Registration rebuilt to an official-document standard. Ran a multi-week hardening programme over it: OWASP ZAP findings closed, a 403 authorization bypass fixed, Content Security Policy and headers configured in nginx, and flagged dependency vulnerabilities cleared.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">nginx</span><span class="tag">OWASP ZAP</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-when">2025 — Present</div>
-        <h3 class="tl-what">Mines Administration System <span class="led">Project Lead</span></h3>
-        <p>Leading a 34-module platform for the Department of Geology and Mines: mining and quarrying leases, transport permits, stockyard balances, royalty calculation and online payment, multi-level approval workflows, role-based access control and NDI passwordless login. Delivered through full User Acceptance Testing with government stakeholders, running on Kubernetes.</p>
-        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">PostgreSQL</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">Bhutan NDI</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-when">Independent work</div>
-        <h3 class="tl-what">Document &amp; Invoice Automation</h3>
-        <p>Node.js tooling that generates Word documents and invoices for Nimalung Dratshang and Yuvan Infotech, replacing document preparation that had been done by hand.</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">docx</span></div>
+      <div class="lg-year"><span>Aside</span></div>
+      <div class="lg-items">
+        <article class="entry">
+          <div class="entry-top">
+            <h3>Document and invoice automation</h3>
+            <span class="role">Independent work</span>
+          </div>
+          <p class="who">Nimalung Dratshang and Yuvan Infotech</p>
+          <p class="desc">Tooling that generates Word documents and invoices, replacing preparation that had been done by hand.</p>
+          <ul class="stack"><li>Node.js</li><li>docx</li></ul>
+        </article>
       </div>
 
     </div>
   </div>
 </section>
 
-
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head"><h2>Toolkit</h2><span class="rule"></span></div>
-    <dl class="skills">
-      <div class="skill-row"><dt>Backend</dt><dd>Spring Boot · Spring MVC · Spring Security · Hibernate / JPA · REST APIs · Node.js · FastAPI · Django</dd></div>
-      <div class="skill-row"><dt>Frontend</dt><dd>Angular · Next.js / React · Bootstrap</dd></div>
-      <div class="skill-row"><dt>Data</dt><dd>PostgreSQL · MySQL · MongoDB · backup &amp; restore · Foreign Data Wrappers · query and view optimization</dd></div>
-      <div class="skill-row"><dt>Cloud &amp; ops</dt><dd>AWS (Lambda, API Gateway, EC2, S3, IAM, Cognito, EventBridge, VPC, Secrets Manager) · Kubernetes · Docker · Jenkins · nginx · Linux · Git</dd></div>
-      <div class="skill-row"><dt>Security</dt><dd>OWASP ZAP remediation · CSP &amp; security headers · JWT · RBAC · SSO / Keycloak · Trivy &amp; npm scanning · patch management · secure API design</dd></div>
-      <div class="skill-row"><dt>Practice</dt><dd>Requirement gathering · system analysis &amp; design · technical specification · UAT · production support · project coordination</dd></div>
+<section class="band">
+  <div class="shell">
+    <h2>What I use</h2>
+    <dl class="grid-defs">
+      <div class="def"><dt>Backend</dt><dd>Spring Boot, Spring MVC, Spring Security, Hibernate and JPA, REST APIs, Node.js, FastAPI, Django</dd></div>
+      <div class="def"><dt>Frontend</dt><dd>Angular, Next.js and React</dd></div>
+      <div class="def"><dt>Data</dt><dd>PostgreSQL, MySQL, MongoDB — backup and restore, foreign data wrappers, indexing, query and view optimisation</dd></div>
+      <div class="def"><dt>Cloud and ops</dt><dd>AWS (Lambda, API Gateway, EC2, S3, IAM, Cognito, EventBridge, VPC, Secrets Manager), Kubernetes, Docker, Jenkins, nginx, Linux, Git</dd></div>
+      <div class="def"><dt>Digital identity</dt><dd>Bhutan NDI — verifiable credential issuance, proof requests, passwordless login, webhook registration and NATS event handling</dd></div>
+      <div class="def"><dt>Security</dt><dd>OWASP ZAP remediation, content security policy and headers, JWT, role-based access control, single sign-on with Keycloak, dependency scanning, patch management, secure API design</dd></div>
+      <div class="def"><dt>Ways of working</dt><dd>Requirement gathering, system analysis and design, technical specification, user acceptance testing, production support, project coordination</dd></div>
     </dl>
   </div>
 </section>
 
-<section id="credentials">
-  <div class="wrap">
-    <div class="sec-head"><h2>Credentials</h2><span class="rule"></span></div>
-    <ul class="stack-list">
-      <li><span><strong>AWS Certified Cloud Practitioner</strong><span class="by">Amazon Web Services · valid to Sep 2027</span></span><span class="yr">2024</span></li>
-      <li><span><strong>Certified DevOps Engineer</strong><span class="by">Global Skill Development Council · passed at 97.5%</span></span><span class="yr">2025</span></li>
-      <li><span><strong>PMO / SA Capacity Development Program</strong><span class="by">Accenture Japan &amp; JICA · strengthening the digital technology and data utilization capabilities of the Government of Bhutan</span></span><span class="yr">2025</span></li>
-      <li><span><strong>Web Application &amp; API Protection, Level 1</strong><span class="by">Prophaze Technologies</span></span><span class="yr">2023</span></li>
-      <li><span><strong>Introduction to Data Science with Python</strong><span class="by">Omdena Academy</span></span><span class="yr">2024</span></li>
-      <li><span><strong>B.Tech, Computer Science &amp; Engineering</strong><span class="by">Cloud Technology &amp; Information Security · Maharishi Markandeshwar (Deemed to be University) · CGPA 8.38, First Division with Distinction</span></span><span class="yr">2023</span></li>
+<section class="band">
+  <div class="shell">
+    <h2>Credentials</h2>
+    <ul class="rows">
+      <li><span class="t">AWS Certified Cloud Practitioner<span class="s">Amazon Web Services, valid to September 2027</span></span><span class="w">2024</span></li>
+      <li><span class="t">Certified DevOps Engineer<span class="s">Global Skill Development Council, passed at 97.5 percent</span></span><span class="w">2025</span></li>
+      <li><span class="t">PMO and solution architecture capacity development<span class="s">Accenture Japan and JICA, strengthening the digital technology and data utilization capabilities of the Government of Bhutan</span></span><span class="w">2025</span></li>
+      <li><span class="t">Web application and API protection, level 1<span class="s">Prophaze Technologies</span></span><span class="w">2023</span></li>
+      <li><span class="t">Introduction to data science with Python<span class="s">Omdena Academy</span></span><span class="w">2024</span></li>
+      <li><span class="t">B.Tech, Computer Science &amp; Engineering<span class="s">Cloud technology and information security. Maharishi Markandeshwar (Deemed to be University). CGPA 8.38, first division with distinction</span></span><span class="w">2023</span></li>
     </ul>
-  </div>
-</section>
 
-<section id="hackathons">
-  <div class="wrap">
-    <div class="sec-head"><h2>Hackathons</h2><span class="rule"></span></div>
-    <ul class="stack-list">
-      <li><span><strong>Bhutan DevFest International Hackathon</strong><span class="by">Decentralized applications on Bhutan NDI · GovTech Agency, Bhutan NDI &amp; Ethereum Foundation · Pangbisa, Paro</span></span><span class="yr">Jun 2025</span></li>
-      <li><span><strong>Blockchain-Based Land Registry System Hackathon</strong><span class="by">GovTech Agency &amp; National Land Commission Secretariat</span></span><span class="yr">Jun 2025</span></li>
-      <li><span><strong>DHI × AWS Hackathon</strong><span class="by">Druk Holding and Investments &amp; Amazon Web Services</span></span><span class="yr">Oct 2024</span></li>
+    <h3 class="subhead">Hackathons</h3>
+    <ul class="rows">
+      <li><span class="t">Bhutan DevFest international hackathon<span class="s">Decentralized applications on the national digital identity. GovTech Agency, Bhutan NDI and the Ethereum Foundation, held at Pangbisa in Paro</span></span><span class="w">June 2025</span></li>
+      <li><span class="t">Blockchain-based land registry hackathon<span class="s">GovTech Agency and the National Land Commission Secretariat</span></span><span class="w">June 2025</span></li>
+      <li><span class="t">DHI and AWS hackathon<span class="s">Druk Holding and Investments with Amazon Web Services</span></span><span class="w">October 2024</span></li>
     </ul>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>Thimphu, Bhutan · <a href="mailto:gannu607gc@gmail.com">gannu607gc@gmail.com</a> · <a href="https://github.com/GaneshChhetri" target="_blank" rel="noopener">GitHub</a></p>
+<footer class="foot">
+  <div class="shell">
+    <span>Thimphu, Bhutan</span>
+    <span><a href="mailto:gannu607gc@gmail.com">gannu607gc@gmail.com</a></span>
+    <span><a href="https://github.com/GaneshChhetri" target="_blank" rel="noopener">github.com/GaneshChhetri</a></span>
   </div>
 </footer>
 
 <script>
 (function(){
-  var btn = document.getElementById('themeBtn');
-  var saved = null;
-  try { saved = localStorage.getItem('theme'); } catch(e) {}
-  if (saved === 'dark' || saved === 'light') {
-    document.documentElement.setAttribute('data-theme', saved);
-  }
+  var root = document.documentElement, btn = document.getElementById('theme'), saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+
   btn.addEventListener('click', function(){
-    var cur = document.documentElement.getAttribute('data-theme');
-    if (!cur) {
-      cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    var cur = root.getAttribute('data-theme');
+    if (!cur) cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     var next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch(e) {}
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
   });
 })();
 </script>
